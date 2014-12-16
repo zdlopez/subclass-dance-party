@@ -30,7 +30,7 @@ $(document).ready(function(){
       Math.random() * 1000
     );
     window.dancers.push(dancer);
-    $('body').append(dancer.$node);
+    $(".dancefloor").append(dancer.$node);
 
     if(dancer instanceof makeDogDancer){
       window.allDogs.push(dancer);
@@ -54,8 +54,24 @@ $(document).ready(function(){
     runAway();
   });
 
+  $(".dancefloor").on("mouseover",'span',function(event){
+    // console.log(event);
+    console.log(this);
+    var transform = {'transform':'rotate(360deg)'};
+    $(this).fadeOut();//{'transform':'rotate(360deg)'});
+
+  });
+
+  $(".dancefloor").on("mouseleave",'span',function(event){
+    // console.log(event);
+    console.log(this);
+    var transform = {'transform':'rotate(360deg)'};
+    $(this).fadeIn();//{'transform':'rotate(360deg)'});
+
+  });
+
+
   var runAway = function(){
-    console.log(window.allCats);
     for(var i=0;i<window.allCats.length;i++){
       var catPosition = window.allCats[i].$node.offset();
       var closestDogs = [];
@@ -82,12 +98,9 @@ $(document).ready(function(){
       window.allCats[i].$node.animate(styleSettings, window.allCats[i].timeBetweenSteps);
     }
 
-
   };
 
-  $('.dancer').on('mouseover', function(){
 
-  });
 
 });
 

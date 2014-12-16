@@ -63,3 +63,5 @@ makeDancer.prototype.lineup = function(){
   this.setPosition(this.$node.css('top'), 0);
 
 };
+
+
