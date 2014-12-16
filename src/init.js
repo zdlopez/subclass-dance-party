@@ -51,7 +51,8 @@ $(document).ready(function(){
     for(var i = 0; i<window.dancers.length; i++){
       window.dancers[i].lineup();
     }
-    runAway();
+    console.log('test');
+    setTimeout(runAway,1000);
   });
 
   $(".dancefloor").on("mouseover",'span',function(event){
