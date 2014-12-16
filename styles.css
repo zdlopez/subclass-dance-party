@@ -25,3 +25,10 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+.rotateRight{
+  transform:rotate(7deg);
+}
+
+.rotateLeft{
+  transform:rotate(-7deg);
+}
