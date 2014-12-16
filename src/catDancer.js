@@ -1,4 +1,4 @@
-var makeDogDancer = function(top, left, timeBetweenSteps){
+var makeCatDancer = function(top, left, timeBetweenSteps){
   makeDancer.call(this, top, left, timeBetweenSteps);
 
   //this.$node = $('<span class="dancer"><img src="download.jpeg"></img></span>');
@@ -7,10 +7,10 @@ var makeDogDancer = function(top, left, timeBetweenSteps){
   //this.step();
 };
 
-makeDogDancer.prototype = Object.create(makeDancer.prototype);
-makeDogDancer.prototype.constructor = makeDogDancer;
+makeCatDancer.prototype = Object.create(makeDancer.prototype);
+makeCatDancer.prototype.constructor = makeCatDancer;
 
-makeDogDancer.prototype.step = function(){
+makeCatDancer.prototype.step = function(){
   // call the old version of step at the beginning of any call to this new version of step
   makeDancer.prototype.step.call(this);
   // toggle() is a jQuery method to show/hide the <span> tag.
@@ -19,7 +19,7 @@ makeDogDancer.prototype.step = function(){
   //console.log(this);
    var styleSettings = {
     'border' : 'none',
-    'background-image': 'url("download.jpeg")',
+    'background-image': 'url("cat.jpeg")',
     'background-repeat': 'no-repeat',
     'background-size': 'contain',
     //'background-size' : '1000px 1000px',

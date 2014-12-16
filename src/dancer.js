@@ -2,8 +2,7 @@
 var makeDancer = function(top, left, timeBetweenSteps){
 
   // use jQuery to create an HTML <span> tag
-  this.$node = $('<span class="dancer"></span>');
-
+  this.$node = $('<span class="move dancer"></span>');
 
   this.step();
   this.timeBetweenSteps = timeBetweenSteps;
@@ -17,7 +16,32 @@ var makeDancer = function(top, left, timeBetweenSteps){
 makeDancer.prototype.step = function(){
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
-  setTimeout(this.step.bind(this), this.timeBetweenSteps);
+  var move = this.$node.attr('class').split(' ');
+
+  if(move.indexOf('move') >= 0 ){
+    setTimeout(this.step.bind(this), this.timeBetweenSteps);
+  } else{
+
+    setTimeout(this.pause.bind(this),this.timeBetweenSteps);
+
+  }
+};
+
+makeDancer.prototype.pause = function(){
+  var move = this.$node.attr('class').split(' ');
+  if(move.indexOf('move') === -1){
+    setTimeout(this.pause.bind(this), this.timeBetweenSteps);
+  } else{
+    var top = $("body").height() * Math.random();
+    var left = $("body").width() * Math.random();
+    var styleAnimate = {
+      top: top,
+      left: left
+    };
+    this.$node.animate(styleAnimate, this.timeBetweenSteps);
+    setTimeout(this.step.bind(this),this.timeBetweenSteps);
+
+  }
 };
 
 makeDancer.prototype.setPosition = function(top, left){
@@ -29,4 +53,13 @@ makeDancer.prototype.setPosition = function(top, left){
     left: left
   };
   this.$node.css(styleSettings);
+};
+
+makeDancer.prototype.lineup = function(){
+
+
+  this.$node.toggleClass('move');
+  //console.log(this.$node.attr('class'));
+  this.setPosition(this.$node.css('top'), 0);
+
 };

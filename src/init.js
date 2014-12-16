@@ -27,7 +27,20 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
     $('body').append(dancer.$node);
+  });
+
+  $(".lineup").on("click", function(event){
+    var msg = $('.lineup').text();
+    if(msg === 'line everyone up'){
+      $('.lineup').text('make them dance');
+    } else {
+      $('.lineup').text('line everyone up');
+    }
+    for(var i = 0; i<window.dancers.length; i++){
+      window.dancers[i].lineup();
+    }
   });
 });
 
