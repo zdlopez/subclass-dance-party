@@ -91,12 +91,14 @@ $(document).ready(function(){
           closestDogs[1]=tuple;
         }
       }
-      var midPoint = [((closestDogs[0][1].left + closestDogs[1][1].left)/2), ((closestDogs[0][1].top + closestDogs[1][1].top)/2)];
-      var styleSettings = {
-        top: midPoint[1],
-        left: midPoint[0]
-      };
-      window.allCats[i].$node.animate(styleSettings, window.allCats[i].timeBetweenSteps);
+      if(closestDogs.length === 2){
+        var midPoint = [((closestDogs[0][1].left + closestDogs[1][1].left)/2), ((closestDogs[0][1].top + closestDogs[1][1].top)/2)];
+        var styleSettings = {
+          top: midPoint[1],
+          left: midPoint[0]
+        };
+        window.allCats[i].$node.animate(styleSettings, window.allCats[i].timeBetweenSteps);
+      }
     }
 
   };
