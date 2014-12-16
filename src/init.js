@@ -1,5 +1,7 @@
 $(document).ready(function(){
   window.dancers = [];
+  window.allDogs = [];
+  window.allCats = [];
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
@@ -29,6 +31,14 @@ $(document).ready(function(){
     );
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
+
+    if(dancer instanceof makeDogDancer){
+      window.allDogs.push(dancer);
+    }
+    if(dancer instanceof makeCatDancer){
+      window.allCats.push(dancer);
+    }
+    runAway();
   });
 
   $(".lineup").on("click", function(event){
@@ -41,6 +51,43 @@ $(document).ready(function(){
     for(var i = 0; i<window.dancers.length; i++){
       window.dancers[i].lineup();
     }
+    runAway();
   });
+
+  var runAway = function(){
+    console.log(window.allCats);
+    for(var i=0;i<window.allCats.length;i++){
+      var catPosition = window.allCats[i].$node.offset();
+      var closestDogs = [];
+      for(var j=0;j<window.allDogs.length;j++){
+        var dogPosition = window.allDogs[j].$node.offset();
+        var distance = Math.sqrt(Math.pow(catPosition.left - dogPosition.left, 2)+(catPosition.top - dogPosition.top,2));
+
+        var tuple = [distance,allDogs[j].$node.offset()];
+        if(closestDogs[0]===undefined){
+          closestDogs.push(tuple);
+        } else if(closestDogs[1]===undefined){
+          closestDogs.push(tuple);
+        } else if(closestDogs[0][0]>distance){
+          closestDogs[0]=tuple;
+        } else if(closestDogs[1][0]>distance){
+          closestDogs[1]=tuple;
+        }
+      }
+      var midPoint = [((closestDogs[0][1].left + closestDogs[1][1].left)/2), ((closestDogs[0][1].top + closestDogs[1][1].top)/2)];
+      var styleSettings = {
+        top: midPoint[1],
+        left: midPoint[0]
+      };
+      window.allCats[i].$node.animate(styleSettings, window.allCats[i].timeBetweenSteps);
+    }
+
+
+  };
+
+  $('.dancer').on('mouseover', function(){
+
+  });
+
 });
 
