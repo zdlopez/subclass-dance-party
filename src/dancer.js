@@ -21,17 +21,32 @@ makeDancer.prototype.step = function(){
   if(move.indexOf('move') >= 0 ){
     setTimeout(this.step.bind(this), this.timeBetweenSteps);
   } else{
-
+    this.$node.stop(true);
     setTimeout(this.pause.bind(this),this.timeBetweenSteps);
-
   }
 };
 
 makeDancer.prototype.pause = function(){
+  var height = $("body").height()-100;
+  var length = $("body").width()-100;
+  var ul = {top:0, left:0};
+  var ur = {top:0, left:length};
+  var br = {top:height, left:length};
+  var bl = {top:height, left:0};
+
   var move = this.$node.attr('class').split(' ');
   if(move.indexOf('move') === -1){
-    setTimeout(this.pause.bind(this), this.timeBetweenSteps);
-  } else{
+    this.$node.toggleClass('spin');
+      this.$node.animate(ul,2000);
+      this.$node.animate(ur,2000);
+      this.$node.animate(br,2000);
+      this.$node.animate(bl,2000);
+
+      var stop = setTimeout(this.pause.bind(this), 2000);
+    } else{
+    this.$node.stop(true);
+    clearTimeout(stop);
+    this.$node.removeClass('spin');
     var top = $("body").height() * Math.random();
     var left = $("body").width() * Math.random();
     var styleAnimate = {
@@ -60,7 +75,7 @@ makeDancer.prototype.lineup = function(){
 
   this.$node.toggleClass('move');
   //console.log(this.$node.attr('class'));
-  this.setPosition(this.$node.css('top'), 0);
+  this.setPosition(0, 0);
 
 };
 

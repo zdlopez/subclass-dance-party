@@ -34,7 +34,7 @@ makeCatDancer.prototype.step = function(){
 
   this.$node.css(styleSettings);
 
-  this.$node.toggleClass('rotateRight');
+  this.$node.toggleClass('rotateLeft');
 };
 
 

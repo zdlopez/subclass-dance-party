@@ -26,9 +26,13 @@ body, a:link, a:visited, a:active{
   position:absolute;
 }
 .rotateRight{
-  transform:rotate(7deg);
+  transform:rotate(15deg);
 }
 
 .rotateLeft{
-  transform:rotate(-7deg);
+  transform:rotate(-15deg);
+}
+
+.spin{
+  transform:rotate(180deg);
 }
