@@ -29,8 +29,8 @@ makeDancer.prototype.step = function(){
 makeDancer.prototype.pause = function(){
   var height = $("body").height()-100;
   var length = $("body").width()-100;
-  var ul = {top:0, left:0};
-  var ur = {top:0, left:length};
+  var ul = {top:50, left:0};
+  var ur = {top:50, left:length};
   var br = {top:height, left:length};
   var bl = {top:height, left:0};
 
