@@ -4,6 +4,9 @@ body, html{
 body{
   margin: 0px;
   background-color:#444;
+  background-image: url("barnyard.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
