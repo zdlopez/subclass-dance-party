@@ -16,7 +16,27 @@ makeBlinkyDancer.prototype.step = function(){
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
   //console.log(this);
+  var styleSettings = {
+    'border' : 'none',
+    'background-image': 'url("turtle.jpg")',
+    'background-repeat': 'no-repeat',
+    'background-size': 'contain',
+    //'background-size' : '1000px 1000px',
+    //'border-color': 'transparent',
+    //'border-radius' : '0px',
+    'height' : '100px',
+    'width' : '100px'
+
+  };
+
+  this.$node.css(styleSettings);
+
+
   this.$node.toggle();
+
+
+
+
 };
 
 

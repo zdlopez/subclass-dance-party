@@ -16,10 +16,28 @@ makeMovingDancer.prototype.step = function(){
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
   //console.log(this);
-  var top  = $("body").height() * Math.random();
-  var left = $("body").width() * Math.random();
-  this.$node.css('border-color','blue');
-   var styleSettings = {
+  var top  = ($("body").height()-100) * Math.random();
+  var left = ($("body").width()-100) * Math.random();
+  this.$node.css('border','none');
+
+
+
+  var styleSettings = {
+    'border' : 'none',
+    'background-image': 'url("buzz.jpeg")',
+    'background-repeat': 'no-repeat',
+    'background-size': 'contain',
+    //'background-size' : '1000px 1000px',
+    //'border-color': 'transparent',
+    //'border-radius' : '0px',
+    'height' : '50px',
+    'width' : '50px'
+
+  };
+
+
+  this.$node.css(styleSettings);
+   styleSettings = {
     top: top,
     left: left
   };

@@ -75,7 +75,7 @@ makeDancer.prototype.lineup = function(){
 
   this.$node.toggleClass('move');
   //console.log(this.$node.attr('class'));
-  this.setPosition(0, 0);
+  this.setPosition(this.$node.css('top'), 0);
 
 };
 
